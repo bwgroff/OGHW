@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from OGHW.views import frontpage
+from django.contrib import admin
+admin.autodiscover()
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -7,6 +9,7 @@ from OGHW.views import frontpage
 
 urlpatterns = patterns('',
     url(r'^$', frontpage),
+    url(r'^admin', include(admin.site.urls))
     # Examples:
     # url(r'^$', 'OGHW.views.home', name='home'),
     # url(r'^OGHW/', include('OGHW.foo.urls')),

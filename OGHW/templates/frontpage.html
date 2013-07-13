@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Front Page{% endblock %}
+{% block page %} Front Page! {% endblock %}
+{% block content %}
+We currently offer {{ product_list|length }} products.
+
+Here are our offerings:
+<ul>
+{% for product in product_list %}
+    <li><a href = product/{{ product.sku }}/> {{ product.name }}</a> - {{ product.desc }}.</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+

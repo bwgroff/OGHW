@@ -15,7 +15,7 @@ class PurchaseRecord(models.Model):
     user_id = models.IntegerField()
     product_id = models.ForeignKey(Product)
     quantity = models.PositiveIntegerField()
-    order_date = models.DateField()
+    order_date = models.DateTimeField()
     bill = models.DecimalField(max_digits=8, decimal_places=2)
     paid = models.BooleanField()
     fulfilled = models.BooleanField()

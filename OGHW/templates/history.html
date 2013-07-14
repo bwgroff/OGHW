@@ -9,7 +9,7 @@
 
 <ul>
 {% for order in orders %}
-    <li>Product: {{ order.product_id }}, Quantity: ${{ order.quantity }}, Date: {{ order.order_date }}, Price: {{order.bill}}.</li>
+    <li>Product: {{ order.product_id }}, Quantity: {{ order.quantity }}, Date: {{ order.order_date }}, Price: ${{order.bill}}.</li>
 {% endfor %}
 </ul>
 

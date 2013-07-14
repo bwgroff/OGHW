@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Product Page for {{ product.name }}{% endblock %}
+<p>
+{% block content %}
+
+{% if ParseError %}
+Oops! Looks like there's an error with the page you're trying to load. Make sure you're requested a valid quantity for a valid product number.
+{% else %}
+    <p>Wow! You bought {{ quantity }} of {{ product.name }}! It only cost you ${{ price }}!</p>
+    <p>Actually, wait.. you paid how much? This doesn't sound like such a good deal after all...</p>
+
+
+{% endif %}
+
+{% endblock %}
+

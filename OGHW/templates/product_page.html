@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Product Page for {{ product.name }}{% endblock %}
+<p>
+{% block content %}
+
+{% if NoProd %}
+Oops! Looks like the product you're interested in doesn't exist.
+{% else %}
+Looks like you want to buy {{ product.name }}. How many would you like?
+
+<form action="/purchase/{{ product.id }}/" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Buy!">
+    </form>
+
+{% endif %}
+
+{% endblock %}
+

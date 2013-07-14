@@ -1,15 +1,17 @@
 from django.conf.urls import patterns, include, url
-from OGHW.views import frontpage
 from django.contrib import admin
+from django.contrib.auth.views import login, logout
 admin.autodiscover()
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
 
-urlpatterns = patterns('',
-    url(r'^$', frontpage),
-    url(r'^admin', include(admin.site.urls))
+urlpatterns = patterns('OGHW.views',
+    url(r'^$', 'frontpage'),
+    url(r'^admin', include(admin.site.urls)),
+    url(r'^accounts/logout/$', logout,),
+    url(r'register/$', 'register'),
+    # url(r'^newuser', 'frontpage'),
+    # url(r'profile/$','frontpage'),
+    url(r'history','history')
     # Examples:
     # url(r'^$', 'OGHW.views.home', name='home'),
     # url(r'^OGHW/', include('OGHW.foo.urls')),
@@ -20,3 +22,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 )
+urlpatterns += patterns('',
+    url(r'login', 'OGHW.views2.login_user'),)
+
+

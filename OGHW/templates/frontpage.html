@@ -1,16 +1,28 @@
 {% extends "base.html" %}
 
 {% block title %}Front Page{% endblock %}
-{% block page %} Front Page! {% endblock %}
+<p>
 {% block content %}
-We currently offer {{ product_list|length }} products.
+{% if user.is_authenticated %}
+Welcome back, {{ user.id }}!
+<a href = /history/> View Order History </a>
+{% else %}
+Thanks for visiting our store. Please <a href = /accounts/login>log in</a> so you can start shopping! If you don't have an account,
+<a href = /register/> sign up</a> for free today!
+{% endif %}</p>
+
+<p> We currently offer {{ product_list|length }} product(s). </p>
 
 Here are our offerings:
 <ul>
 {% for product in product_list %}
-    <li><a href = product/{{ product.sku }}/> {{ product.name }}</a> - {{ product.desc }}.</li>
+    <li>{{ product.name }} (${{ product.unit_price }}) - {{ product.desc }}.</li>
 {% endfor %}
 </ul>
+
+{% if user.is_authenticated %}
+Go <a href = /accounts/logout/>here</a> to logout.
+{% endif %}
 
 {% endblock %}
 

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}View Cart{% endblock %}
+
+{% block content %}
+You have the following items in your cart:
+<ul>
+{% for product in cart %}
+    <li>{{ product.name }} which costs {{ product.price }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+

@@ -97,7 +97,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
@@ -118,6 +118,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'django.contrib.auth',
+    'django.contrib.auth.context_processors',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
@@ -127,6 +128,9 @@ INSTALLED_APPS = (
     'StoreDB',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+)
+CONTEXT_PROCESSORS = (
+    'django.core.context_processors.csrf',
 )
 
 # A sample logging configuration. The only tangible logging

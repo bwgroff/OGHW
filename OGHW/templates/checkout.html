@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+It looks like you'd like to buy the following items:
+<ul>
+{% for product in cart %}
+    <li>{{ product.name }} for {{ product.price }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+

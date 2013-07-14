@@ -9,5 +9,11 @@
     {% block footer %}
     <hr>
     {% endblock %}
+
+
+{% if user.is_authenticated %}
+Pages:     <a href = / >Home</a> | Cart | <a href = /history/>Past Orders</a> | <a href = /accounts/logout/>Logout</a> 
+{% endif %}
+
 </body>
 </html>

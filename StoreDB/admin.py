@@ -11,7 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
 class PurchaseAdmin(admin.ModelAdmin):
     list_display = ('product_id', 'user_id', 'order_date', 'quantity', 'bill', 'paid', 'fulfilled')
     list_filter = ('paid', 'fulfilled', 'order_date', )
-    # date_heirarchy = 'order_date'
+    date_heirarchy = 'order_date'
     search_fields = ('user_id', 'product_id', 'order_date')
     ordering = ('order_date', )
 

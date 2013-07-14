@@ -4,23 +4,35 @@
     <title>{% block title %} title {% endblock %}</title>
 </head>
 <body>
-    <h1>Welcome to {{store.name}} - {% block page%} {% endblock %}</h1>
-    {% if user.is_authenticated %}
-Welcome, {{ user.id }}!
-{% else %}
-Thanks for visiting our store. Please <a href = /accounts/login>log in</a> so you can start shopping! If you don't have an account,
-<a href = /register/> sign up</a> for free today!
-{% endif %}</p>
-    {% block content %}content{% endblock %}
-    {% block footer %}
-    <hr>
-    {% endblock %}
 
 
 {% if user.is_authenticated %}
 Pages:     <a href = / >Home</a> | <a href = /history/>Past Orders</a> | <a href = /accounts/logout/>Logout</a> 
+{% else %}
+Pages:     <a href = / >Home</a> | <a href = /accounts/login>login</a> | <a href = /register/> sign up</a>
 {% endif %}
 
+<hr>
+
+<h1>This is {{store.name}} - {% block page %} {% endblock %}</h1>
+
+{% if user.is_authenticated %}
+Welcome{% if user.name %}, {{user.name}}{% endif %}!
+
+{% else %}
+
+Thanks for visiting our store. Please <a href = /accounts/login>login</a> so you can start shopping! If you don't have an account,
+<a href = /register/> sign up</a> for free today!
+
+{% endif %}</p>
+
+{% block content %}
+content
+{% endblock %}
+
+{% block footer %}
+<hr>
+{% endblock %}
 
 </body>
 </html>

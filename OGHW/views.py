@@ -9,7 +9,7 @@ from StoreDB.models import Product, PurchaseRecord
 # from django.contrib.auth import authenticate, login
 
 
-def frontpage(request):
+def frontpage(request):                 # Basic landing page, changes depending on login
     user = request.user
     store = {'name':  'Store_Name', 'motto': 'Store_Motto'}
     products = Product.objects.all()
@@ -17,13 +17,13 @@ def frontpage(request):
     return render(request, 'frontpage.html', c)
 
 
-def history(request):
+def history(request):                   # shows all entries of PurchaseRecord with given userid
     order_history = PurchaseRecord.objects.filter(user_id=request.user.id).order_by('-order_date')
     c = {'user': request.user, 'orders': order_history}
     return render(request, 'history.html', c)
 
 
-def product_page(request, prod_id):
+def product_page(request, prod_id):     # page where order for a given product is placed
     NoSuchProduct = False
     prod = 0
     try:
@@ -35,7 +35,7 @@ def product_page(request, prod_id):
     return render(request, 'product_page.html', c)
 
 
-def purchase(request):  # , prod_id, quantity):
+def purchase(request):                  # accepts form data from product page to update records
     req_path = request.get_full_path()
     ParseError = False
     try:
@@ -53,17 +53,17 @@ def purchase(request):  # , prod_id, quantity):
         purchase = PurchaseRecord(user_id=request.user.id,
             product_id=prod, quantity=quantity,
             order_date=datetime.datetime.now(),
-            bill=total_cost,paid=False,fulfilled=False)
+            bill=total_cost, paid=False, fulfilled=False)
         purchase.save()
     return render(request, 'purchase.html', c)
 
 
-def register(request):
+def register(request):                  # new user creation
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
-            return HttpResponseRedirect("/")  
+            return HttpResponseRedirect("/login")
     else:
         form = UserCreationForm()
     return render(request, "registration/register.html", {

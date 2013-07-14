@@ -2,6 +2,9 @@
 
 {% block title %}Front Page{% endblock %}
 <p>
+
+{% block page %} Front Page {% endblock %}
+
 {% block content %}
 
 <p> We currently offer {{ product_list|length }} product(s). </p>
@@ -13,9 +16,6 @@ Here are our offerings:
 {% endfor %}
 </ul>
 
-{% if user.is_authenticated %}
-Go <a href = /accounts/logout/>here</a> to logout.
-{% endif %}
 
 {% endblock %}
 

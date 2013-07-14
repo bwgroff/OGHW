@@ -1,6 +1,8 @@
 # // auth/views.py
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
+from django.template import RequestContext
+
 
 def login_user(request):
     state = "Please log in below..."
@@ -19,4 +21,9 @@ def login_user(request):
         else:
             state = "Your username and/or password were incorrect."
 
-    return render_to_response('auth.html',{'state':state, 'username': username})
+    # return render_to_response('auth.html',{'state':state, 'username': username})
+
+    return render_to_response("auth.html", {'state': state, 'username': username}, context_instance=RequestContext(request))
+
+
+

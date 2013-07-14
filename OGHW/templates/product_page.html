@@ -2,6 +2,14 @@
 
 {% block title %}Product Page for {{ product.name }}{% endblock %}
 <p>
+
+{% block page %} 
+{% if NoProd %} 
+Product Query Error 
+{% else %}
+Product Page for {{product.name}}
+{% endif %}{% endblock %}
+
 {% block content %}
 
 {% if NoProd %}

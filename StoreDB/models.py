@@ -1,5 +1,9 @@
 from django.db import models
-
+'''
+mostly this is self-explanatory stuff.
+PurchaseRecord is updated by the purchase view / admin
+Product is updated via admin access only
+'''
 
 class Product(models.Model):
     name = models.CharField(max_length=100)

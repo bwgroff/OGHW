@@ -5,13 +5,13 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('OGHW.views',
-    url(r'^$', 'frontpage'),
-    url(r'^admin', include(admin.site.urls)),
-    url(r'^accounts/logout/$', logout,),
-    url(r'register/$', 'register'),
-    url(r'^product_page/([^/]+)/$', 'product_page'),
-    url(r'history','history'),
-    url(r'^purchase/', 'purchase'),
+    url(r'^$', 'frontpage'),                            # Front Page
+    url(r'^admin', include(admin.site.urls)),           # admin access
+    url(r'^accounts/logout/$', logout, {'next_page': '/'}),                # logout
+    url(r'register/$', 'register'),                     # create new user acct
+    url(r'^product_page/([^/]+)/$', 'product_page'),    # page for buying a product
+    url(r'history','history'),                          # order history page
+    url(r'^purchase/', 'purchase'),                     # purchase confirmation
     # Examples:
     # url(r'^$', 'OGHW.views.home', name='home'),
     # url(r'^OGHW/', include('OGHW.foo.urls')),
@@ -20,4 +20,4 @@ urlpatterns = patterns('OGHW.views',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
 urlpatterns += patterns('',
-    url(r'login', 'OGHW.views2.login_user'),)
+    url(r'login', 'OGHW.views2.login_user'),)           # attempt to fix csrf - fail

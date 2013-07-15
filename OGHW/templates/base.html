@@ -7,9 +7,9 @@
 
 
 {% if user.is_authenticated %}
-Pages:     <a href = / >Home</a> | <a href = /history/>Past Orders</a> | <a href = /accounts/logout/>Logout</a> 
-{% else %}
-Pages:     <a href = / >Home</a> | <a href = /accounts/login>login</a> | <a href = /register/> sign up</a>
+    Pages:     <a href = / >Home</a> | <a href = /history/>Past Orders</a> | <a href = /accounts/logout/>Logout</a> 
+    {% else %}
+    Pages:     <a href = / >Home</a> | <a href = /accounts/login>login</a> | <a href = /register/> sign up</a>
 {% endif %}
 
 <hr>

@@ -15,14 +15,16 @@ Product Page for {{product.name}}
 {% if NoProd %}
 Oops! Looks like the product you're interested in doesn't exist.
 {% else %}
+{% if user.is_authenticated %}
 Looks like you want to buy {{ product.name }}. How many would you like?
 
 <form action="/purchase/{{ product.id }}/" method="get">
         <input type="text" name="q">
         <input type="submit" value="Buy!">
     </form>
-
+{% else %}
+You need to log in to purchase goods from our fine selection!
 {% endif %}
-
+{% endif %}
 {% endblock %}
 

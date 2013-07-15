@@ -24,6 +24,3 @@ def login_user(request):
     # return render_to_response('auth.html',{'state':state, 'username': username})
 
     return render_to_response("auth.html", {'state': state, 'username': username}, context_instance=RequestContext(request))
-
-
-

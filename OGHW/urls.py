@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.contrib.auth.views import login, logout
+from django.contrib.auth.views import logout
 admin.autodiscover()
 
 
@@ -10,7 +10,7 @@ urlpatterns = patterns('OGHW.views',
     url(r'^accounts/logout/$', logout, {'next_page': '/'}),                # logout
     url(r'register/$', 'register'),                     # create new user acct
     url(r'^product_page/([^/]+)/$', 'product_page'),    # page for buying a product
-    url(r'history','history'),                          # order history page
+    url(r'history', 'history'),                          # order history page
     url(r'^purchase/', 'purchase'),                     # purchase confirmation
     # Examples:
     # url(r'^$', 'OGHW.views.home', name='home'),

@@ -1,1 +1,3 @@
 OrderGroove Coding HW
+
+Installation should just be cloning the repo since I have the static files inside and I dynamically identified the relevant directories with 'os.path.join(os.path.dirname(__file__), 'something')'.
